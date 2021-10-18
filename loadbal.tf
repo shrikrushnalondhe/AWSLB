@@ -32,9 +32,9 @@ module "elb" {
     timeout             = 5
   }
 
-  access_logs = {
-    bucket = "demo-access-log-bucket"
-  }
+  ## access_logs = { ##
+   ## bucket = "demo-access-log-bucket"##
+  ##}##
 
   // ELB attachments
   number_of_instances = 2
