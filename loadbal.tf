@@ -8,7 +8,7 @@ module "elb" {
   version = "3.0.0"
   # insert the 6 required variables here #
 
-  name = "elb-example"
+  name = "elb-demo"
 
   subnets         = ["subnet-0941bf30d4aa73d69", "subnet-05c8a9b7ec7aab601"]
   security_groups = ["sg-0888bfa2936ce81f9"]
@@ -33,7 +33,7 @@ module "elb" {
   }
 
   access_logs = {
-    bucket = "arn:aws:s3:::demo-access-log-bucket"
+    bucket = "demo-access-log-bucket"
   }
 
   // ELB attachments
