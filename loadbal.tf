@@ -5,8 +5,8 @@ module "elb_http" {
 
   name = "elb-example"
 
-  subnets         = ["subnet-12345678", "subnet-87654321"]
-  security_groups = ["sg-12345678"]
+  subnets         = ["subnet-0941bf30d4aa73d69", "subnet-05c8a9b7ec7aab601"]
+  security_groups = ["sg-0888bfa2936ce81f9"]
   internal        = false
 
   listener = [
@@ -17,9 +17,9 @@ module "elb_http" {
       lb_protocol       = "HTTP"
     },
     {
-      instance_port     = 8080
+      instance_port     = 443
       instance_protocol = "http"
-      lb_port           = 8080
+      lb_port           = 443
       lb_protocol       = "http"
       ssl_certificate_id = "arn:aws:acm:eu-west-1:235367859451:certificate/6c270328-2cd5-4b2d-8dfd-ae8d0004ad31"
     },
@@ -34,12 +34,12 @@ module "elb_http" {
   }
 
   access_logs = {
-    bucket = "my-access-logs-bucket"
+    bucket = "demo-access-log-bucket"
   }
 
   // ELB attachments
   number_of_instances = 2
-  instances           = ["i-06ff41a77dfb5349d", "i-4906ff41a77dfb53d"]
+  instances           = ["i-021ce51c8e99b3bef", "i-0d3795327779c4677"]
 
   tags = {
     Owner       = "user"
