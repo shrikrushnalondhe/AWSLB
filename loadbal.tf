@@ -38,7 +38,7 @@ module "elb" {
   }
 
   access_logs = {
-    bucket = "demo-access-log-bucket"
+    bucket = "arn:aws:s3:::demo-access-log-bucket"
   }
 
   // ELB attachments
