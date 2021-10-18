@@ -21,7 +21,12 @@ module "elb" {
       lb_port           = 80
       lb_protocol       = "HTTP"
     },
-    
+    {
+      instance_port     = 443
+      instance_protocol = "HTTPS"
+      lb_port           = 443
+      lb_protocol       = "HTTPS"
+    },
   ]
 
   health_check = {
