@@ -1,39 +1,48 @@
-#not working#
-/*
-module "alb" {
-  source  = "terraform-aws-modules/alb/aws"
-  version = "~> 6.0"
+#Load Balancer#
+module "elb_http" {
+  source  = "terraform-aws-modules/elb/aws"
+  version = "~> 2.0"
 
-  name = "my-alb"
+  name = "elb-example"
 
-  load_balancer_type = "application"
+  subnets         = ["subnet-12345678", "subnet-87654321"]
+  security_groups = ["sg-12345678"]
+  internal        = false
 
-  vpc_id             = "vpc-eecb1e85"
-  subnets            = ["subnet-8b82a2c7", "subnet-8b82a2c7"]
-  security_groups    = ["sg-07f69e000327985bd", "sg-07f69e000327985bd"]
+  listener = [
+    {
+      instance_port     = 80
+      instance_protocol = "HTTP"
+      lb_port           = 80
+      lb_protocol       = "HTTP"
+    },
+    {
+      instance_port     = 8080
+      instance_protocol = "http"
+      lb_port           = 8080
+      lb_protocol       = "http"
+      ssl_certificate_id = "arn:aws:acm:eu-west-1:235367859451:certificate/6c270328-2cd5-4b2d-8dfd-ae8d0004ad31"
+    },
+  ]
 
-  access_logs = {
-    bucket = "my-alb-logs"
+  health_check = {
+    target              = "HTTP:80/"
+    interval            = 30
+    healthy_threshold   = 2
+    unhealthy_threshold = 2
+    timeout             = 5
   }
 
-  target_groups = [
-    {
-      name_prefix      = "pref-"
-      backend_protocol = "HTTP"
-      backend_port     = 80
-      target_type      = "instance"
+  access_logs = {
+    bucket = "my-access-logs-bucket"
+  }
 
-      targets = [
-        {
-          target_id = "i-044c72eae30af8e03"
-          port = 80
-        },
-        {
-          target_id = "i-045191384784a36b6"
-          port = 80
-        }
-      ]
-    }
-  ]
+  // ELB attachments
+  number_of_instances = 2
+  instances           = ["i-06ff41a77dfb5349d", "i-4906ff41a77dfb53d"]
+
+  tags = {
+    Owner       = "user"
+    Environment = "dev"
+  }
 }
-*/
