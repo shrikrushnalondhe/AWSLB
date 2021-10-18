@@ -41,7 +41,6 @@ module "elb" {
   instances           = ["i-021ce51c8e99b3bef", "i-0d3795327779c4677"]
 
   tags = {
-   Environment1 = "dev"
-   Environment2 = "prod"
+   product = "demo"
   }
 }
