@@ -3,9 +3,10 @@ provider "aws" {
 }
 
 #Load Balancer#
-module "elb_http" {
+module "elb" {
   source  = "terraform-aws-modules/elb/aws"
-  version = "~> 2.0"
+  version = "3.0.0"
+  # insert the 6 required variables here #
 
   name = "elb-example"
 
