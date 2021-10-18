@@ -1,3 +1,7 @@
+provider "aws" {
+  region = "us-east-1"
+}
+
 #Load Balancer#
 module "elb_http" {
   source  = "terraform-aws-modules/elb/aws"
