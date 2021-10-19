@@ -44,7 +44,7 @@ module "elb" {
 
   // ELB attachments
   number_of_instances = 2
-  instances           = ["i-056a641837b893804", "i-0b28c0cda1d025802"]
+  instances           = ["i-0e5cd74ce9936a857", "i-00886695d6bf710ab"]
 
   tags = {
    product = "demo"
