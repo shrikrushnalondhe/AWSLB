@@ -21,7 +21,13 @@ module "elb" {
       lb_port           = 80
       lb_protocol       = "HTTP"
     },
-    
+    {
+      instance_port     = 443
+      instance_protocol = "https"
+      lb_port           = 443
+      lb_protocol       = "https"
+      ssl_certificate_id = "arn:aws:acm:us-east-1:885270470374:certificate/d2b7948f-f15f-4a38-b17e-ab6247572580"
+    },
   ]
 
   health_check = {
