@@ -3,16 +3,18 @@ provider "aws" {
 }
 
 #Load Balancer#
-module "elb" {
-  source  = "terraform-aws-modules/elb/aws"
-  version = "3.0.0"
-  # insert the 6 required variables here #
+module "alb" {
+  source  = "terraform-aws-modules/alb/aws"
+  version = "~> 6.0"
 
-  name = "elb-demo"
+  name = "alb-demo"
+
+  load_balancer_type = "application"
+
+  vpc_id          = "vpc-0db5bb8173fafe78e"
   subnets         = ["subnet-03c334d465ef9d388", "subnet-0b896649d349b8532"]
   security_groups = ["sg-0a0a7f3ba21c17b72"]
   internal        = false
-  vpc_id             = "vpc-0db5bb8173fafe78e"
   
   listener = [
     {
