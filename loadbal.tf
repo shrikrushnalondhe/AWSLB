@@ -32,10 +32,10 @@ module "elb" {
 
   health_check = {
     target              = "HTTP:80/"
-    interval            = 30
-    healthy_threshold   = 10
-    unhealthy_threshold = 4
-    timeout             = 5
+    interval            = 39
+    healthy_threshold   = 30
+    unhealthy_threshold = 9
+    timeout             = 9
   }
 
   ## access_logs = { ##
