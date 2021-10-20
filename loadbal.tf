@@ -9,7 +9,8 @@ module "elb" {
   # insert the 6 required variables here #
 
   name = "elb-demo"
-
+ load_balancer_type = "application"
+  vpc_id             = "vpc-0db5bb8173fafe78e"
   subnets         = ["subnet-03c334d465ef9d388", "subnet-0b896649d349b8532"]
   security_groups = ["sg-0a0a7f3ba21c17b72"]
   internal        = false
@@ -44,7 +45,7 @@ module "elb" {
 
   // ELB attachments
   number_of_instances = 2
-  instances           = ["i-08f7c073b50f210b8", "i-0cf6b4f2d05bf1985"]
+  instances           = ["i-0b38ad7853452fc40", "i-09867b5f4bf6ee525"]
 
   tags = {
    product = "demo"
