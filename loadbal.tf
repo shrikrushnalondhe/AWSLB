@@ -11,7 +11,7 @@ module "elb" {
   name = "elb-demo"
 
   subnets         = ["subnet-0c511796997abef66", "subnet-0b896649d349b8532"]
-  security_groups = [""]
+  security_groups = ["sg-01a115e9c7229775f"]
   internal        = true
   
   listener = [
