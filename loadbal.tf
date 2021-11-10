@@ -10,10 +10,10 @@ module "elb" {
 
   name = "elb-demo"
 
-  subnets         = ["subnet-02aa0a91b953c9991", "subnet-0ddf6249bfb1baa45"]
-  security_groups = ["sg-07db1f198b4329c4c"]
+  subnets         = ["subnet-0e4d9be10adee579b", "subnet-0583f78d928f94463"]
+  security_groups = ["sg-06ada71727846e94f"]
   internal        = true
-  
+
   listener = [
     {
       instance_port     = 80
@@ -21,13 +21,21 @@ module "elb" {
       lb_port           = 80
       lb_protocol       = "HTTP"
     },
+
     {
-      instance_port     = 443
-      instance_protocol = "https"
-      lb_port           = 443
-      lb_protocol       = "https"
-      ssl_certificate_id = "arn:aws:acm:us-east-1:885270470374:certificate/d2b7948f-f15f-4a38-b17e-ab6247572580"
+      instance_port     = 8081
+      instance_protocol = "tcp"
+      lb_port           = 8081
+      lb_protocol       = "tcp"
     },
+
+#    {#
+ #     instance_port     = 443 #
+  #    instance_protocol = "https" #
+   #   lb_port           = 443 #
+    #  lb_protocol       = "https" #
+     # ssl_certificate_id = "arn:aws:acm:us-east-1:885270470374:certificate/d2b7948f-f15f-4a38-b17e-ab6247572580" #
+   # },#
   ]
 
   health_check = {
@@ -44,7 +52,7 @@ module "elb" {
 
   // ELB attachments
   number_of_instances = 2
-  instances           = ["i-0178d8784e7fc58ef", "i-020d84d528e2ce8ba"]
+  instances           = ["i-07498c88e659447e8", "i-0de641a7b1b1b91c8"]
 
   tags = {
    product = "demo"
