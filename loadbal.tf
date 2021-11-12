@@ -10,8 +10,8 @@ module "elb" {
 
   name = "elb-demo"
 
-  subnets         = ["subnet-0e4d9be10adee579b", "subnet-0583f78d928f94463"]
-  security_groups = ["sg-06ada71727846e94f"]
+  subnets         = ["subnet-0057fbf94fb8e357e", "subnet-009f8859d371590e9"]
+  security_groups = ["sg-0b70a45765b71719f"]
   internal        = true
 
   listener = [
@@ -52,7 +52,7 @@ module "elb" {
 
   // ELB attachments
   number_of_instances = 2
-  instances           = ["i-07498c88e659447e8", "i-0de641a7b1b1b91c8"]
+  instances           = ["i-08b5dbe2feb9dc941", "i-05665ec33d98b8733"]
 
   tags = {
    product = "demo"
